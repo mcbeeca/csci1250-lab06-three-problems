@@ -122,7 +122,39 @@ do
             // if: choices can range from 1 to 5
             if (choice == 3 || choice == 4)
             {
-                Console.WriteLine("test 3.");
+                int[] scores = new int[5];
+                int total = 0;
+                int highest = int.MinValue;
+                int passing = 0;
+
+                Console.WriteLine("\n=== Exercise 3: The Score Report ===");
+                
+                // if: choices can range from 1 to 5
+                for (int i = 0; i < scores.Length; i++)
+                {
+                   Console.WriteLine($"Score {i + 1}: ");
+                   scores[i] = int.Parse(Console.ReadLine()!);
+
+                   total += scores[i];
+
+                   if (scores[i] > highest);
+                   {
+                      highest = scores[i];
+                   }
+
+                   if (scores[i] >= 60); 
+                   {
+                     passing++;
+                   }
+                }
+
+                double average = (double)total / scores.Length;
+
+                Console.WriteLine($"Scores entered: {scores.Length}");
+                Console.WriteLine($"Total: {total}");
+                Console.WriteLine($"Average: {average:F1}");
+                Console.WriteLine($"Highest: {highest}");
+                Console.WriteLine($"Passing: {passing} of {scores.Length}");
             }
 
 } while (choice != 5);
