@@ -8,6 +8,8 @@
 * practices decisions and one of the four loops.
 */
 
+using System.Formats.Asn1;
+
 int choice = 0;
 Random rng = new Random(4000);
 
@@ -48,9 +50,9 @@ do
                     score = int.Parse(Console.ReadLine());
                 }
 
-                char grade;
+        char grade;
 
-                if (score >= 90)
+        if (score >= 90)
                    grade = 'A';
                 else if (score >= 80)
                    grade = 'B';
@@ -66,7 +68,46 @@ do
 
             if (choice == 2 || choice == 4)
             {
-                Console.WriteLine("test 2.");
+                int rollNumber = 0;
+                int wins = 0;
+                Console.WriteLine("=== Exercise 2: The Dice Table ===");
+                char answer = 'y';
+                 
+                while (answer == 'y')
+                {
+                  int dice1 = rng.Next(1, 7);
+                  int dice2 = rng.Next(1, 7);
+                  rollNumber++;
+                  
+                  int total = dice1 + dice2;
+                  Console.Write($"Roll {rollNumber}: {dice1} and {dice2}, total {total}");
+
+                  if (total == 7 || total == 11)
+                  {
+                    Console.Write(" Winner!");
+                    wins++;
+                  }
+
+                  if (dice1 == 1 && dice2 == 1)
+                  {
+                    Console.Write(" Snake Eyes!");
+                  }
+                  else if (dice1 == dice2)
+                  {
+                    Console.Write(" Doubles!");
+                  }
+
+                  Console.WriteLine($"\nRoll again? y/n");
+                  string input = Console.ReadLine();
+                  answer = input.Length > 0 ? char.ToLower(input[0]) : 'n';
+
+                }
+
+                if (answer == 'n')
+                {
+                    Console.WriteLine($"You rolled {rollNumber} times and won {wins} times!");
+                }
+                
             }
 
             if (choice == 3 || choice == 4)
