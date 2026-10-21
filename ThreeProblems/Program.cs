@@ -9,6 +9,7 @@
 */
 
 int choice = 0;
+Random rng = new Random(4000);
 
 // do while: the menu needs to reprint every time if the value is not 5
 do
@@ -25,7 +26,7 @@ do
    Console.Write("Choose 1 through 5: ");
    int.TryParse(Console.ReadLine(), out choice);
 
-    // while: the number of invalid entries is unknown, and there may be none
+    // while: the choices may be more than the range of 1 to 5, or may be invalid/nothing at all
             while (choice < 1 || choice > 5)
             {
                 Console.Write("Choose a number from 1 to 5: ");
@@ -34,7 +35,33 @@ do
 
             if (choice == 1 || choice == 4)
             {
-                Console.WriteLine("test 1.");
+                Console.WriteLine("\n=== The Grade Checker ===");
+
+                Console.WriteLine("Score: ");
+                int score = int.Parse(Console.ReadLine());
+
+                 // while: scores may not be in between 0 and 100, and it may be invalid characters or nothing at all
+                while (score < 0 || score > 100)
+                {
+                    Console.WriteLine("A score must be between 0 and 100.");
+                    Console.WriteLine("Score: ");
+                    score = int.Parse(Console.ReadLine());
+                }
+
+                char grade;
+
+                if (score >= 90)
+                   grade = 'A';
+                else if (score >= 80)
+                   grade = 'B';
+                else if (score >= 70)
+                   grade = 'C';
+                else if (score >= 60)
+                   grade = 'D';
+                else 
+                   grade = 'F';
+                
+                Console.WriteLine($"{score} earns a {grade}!");
             }
 
             if (choice == 2 || choice == 4)
