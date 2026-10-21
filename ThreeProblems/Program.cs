@@ -129,7 +129,7 @@ do
 
                 Console.WriteLine("\n=== Exercise 3: The Score Report ===");
                 
-                // if: choices can range from 1 to 5
+                // for: needs to count the amount of scores in the array
                 for (int i = 0; i < scores.Length; i++)
                 {
                    Console.WriteLine($"Score {i + 1}: ");
